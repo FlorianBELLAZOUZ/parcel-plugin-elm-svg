@@ -28,8 +28,11 @@ function setup(config, watch) {
 
         try {
           const moduleCode = await generateModule(name, filePaths);
+          const str = moduleCode
+            .replace(/List \(Attribute msg\) -> /g,'')
+            .replace(/attrs /g,'')
 
-          await fs.promises.writeFile(dest, moduleCode);
+          await fs.promises.writeFile(dest, str);
         } catch (err) {
           error(`Failed to generate ${name}`, err);
         }
