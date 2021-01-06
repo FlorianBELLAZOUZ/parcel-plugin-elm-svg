@@ -31,6 +31,7 @@ function setup(config, watch) {
           const str = moduleCode
             .replace(/List \(Attribute msg\) -> /g,'')
             .replace(/attrs /g,'')
+            .replace(/\+\+ attrs/g,'')
 
           await fs.promises.writeFile(dest, str);
         } catch (err) {
